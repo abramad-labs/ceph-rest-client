@@ -1,8 +1,21 @@
 package cephrestclient
 
+type Snapshot struct {
+	ID          int    `json:"id"`
+	Size        int    `json:"size"`
+	Name        string `json:"name"`
+	Namespace   int    `json:"namespace"`
+	MirrorMode  string `json:"mirror_mode"`
+	Timestamp   string `json:"timestamp"`
+	IsProtected bool   `json:"is_protected"`
+	UsedBytes   *int   `json:"used_bytes"`
+	Children    []any  `json:"children"`
+	DiskUsage   int    `json:"disk_usage"`
+}
+
 type Image struct {
-	Size            int64    `json:"size"`
-	ObjSize         int64    `json:"obj_size"`
+	Size            int      `json:"size"`
+	ObjSize         int      `json:"obj_size"`
 	NumObjs         int      `json:"num_objs"`
 	Order           int      `json:"order"`
 	BlockNamePrefix string   `json:"block_name_prefix"`
@@ -17,7 +30,7 @@ type Image struct {
 	FeaturesName    []string `json:"features_name"`
 	Timestamp       string   `json:"timestamp"`
 	StripeCount     int      `json:"stripe_count"`
-	StripeUnit      int64    `json:"stripe_unit"`
+	StripeUnit      int      `json:"stripe_unit"`
 	DataPool        *string  `json:"data_pool"`
 	Parent          struct {
 		PoolName      string `json:"pool_name"`
@@ -25,9 +38,9 @@ type Image struct {
 		ImageName     string `json:"image_name"`
 		SnapName      string `json:"snap_name"`
 	} `json:"parent"`
-	Snapshots      []any `json:"snapshots"`
-	TotalDiskUsage int64 `json:"total_disk_usage"`
-	DiskUsage      int64 `json:"disk_usage"`
+	Snapshots      []Snapshot `json:"snapshots"`
+	TotalDiskUsage int        `json:"total_disk_usage"`
+	DiskUsage      int        `json:"disk_usage"`
 	Configuration  []struct {
 		Name   string `json:"name"`
 		Value  string `json:"value"`
