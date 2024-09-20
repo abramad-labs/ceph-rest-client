@@ -1,6 +1,6 @@
 module github.com/abramad-labs/ceph-rest-client
 
-go 1.22.0
+go 1.20
 
 require (
 	github.com/oapi-codegen/oapi-codegen/v2 v2.3.0
